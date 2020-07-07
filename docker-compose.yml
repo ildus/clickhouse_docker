@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  clickhouse:
+    build:
+      context: .
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    environment:
+      - TOOL=clickhouse-server
+  clickhouse-client:
+    network_mode: "host"
+    build:
+      context: .
+    environment:
+      - TOOL=clickhouse-client
